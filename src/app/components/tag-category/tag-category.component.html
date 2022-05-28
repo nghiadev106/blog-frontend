@@ -1,0 +1,21 @@
+<!-- Tag-block -->
+<div class="container">
+  <div class="tag-block hidden-xs hidden-sm">
+    <div class="title-tag-block">CHUYÊN MỤC XEM NHIỀU NHẤT</div>
+    <ul class="list-tags list-unstyled">
+
+      <li class="list-tags__item" *ngFor="let item of data">
+        <a class="list-tags__link" routerLink="/{{item.Url}}/{{item.Id}}">{{item.Name}}</a>
+      </li>
+
+    </ul>
+    <div class="text-tag-block">
+      Elle.vn cung cấp những nội dung chính liên quan đến thế giới thời trang, làm đẹp chuyên nghiệp và những bí
+      quyết giúp bạn luôn tự tin như một cô gái ELLE “Sắc sảo, sành điệu và sâu lắng”. Ngoài ra, Elle.vn còn luôn
+      cập nhật những chia sẻ ngắn, bí quyết về thời trang, làm đẹp cùng những trang phục đẹp hàng ngày, đồng thời
+      giới thiệu những tác phẩm văn hóa, nguồn cảm hứng và các blog thú vị bình luận về phong cách sống, quan điểm
+      sống từ biên tập viên của Phái đẹp ELLE, độc giả và blogger.
+    </div>
+  </div>
+</div>
+<!-- /Tag-block -->

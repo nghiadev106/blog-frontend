@@ -1,0 +1,106 @@
+<div accept-charset="utf-8" class="newsletter-popup__form clearfix full-height">
+  <div class="row no-free-space full-height">
+    <div class="col-md-12 float-right full-height flex-display">
+      <div class="no-free-space top-row-form-group">
+        <div id="first_email_input">
+          <div class="form-group newsletter-email-lable">
+            <div class="newsletter-description">KẾT NỐI VỚI ELLE! <br>BẮT KỊP NHỊP ĐẬP THỜI TRANG,<br>LÀM ĐẸP VÀ
+              PHONG CÁCH SỐNG</div>
+            <div class="form-container">
+              <form class="form-login" [formGroup]="formRegister" (ngSubmit)="onRegister()">
+                <div class="newsletter-input-mail">
+                  <span class="ico-newsletter-username"></span>
+                  <div class="inside-mail-input">
+                    <input id="subscriber_email" type="text" name="username" formControlName="Username"
+                      class="form-control newsletter-email" placeholder="Tài khoản" required />
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['Username'].hasError('required') && formRegister.controls['Username']?.touched">
+                    tài khoản không được để trống!
+                  </div>
+                </div>
+
+                <div class="newsletter-input-mail">
+                  <span class="ico-newsletter-name"></span>
+                  <div class="inside-mail-input">
+                    <input id="subscriber_email" type="text" name="fullname" formControlName="FullName"
+                      class="form-control newsletter-email" placeholder="Họ và tên" required />
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['FullName'].hasError('required') && formRegister.controls['FullName']?.touched">
+                    Họ và tên không được để trống!
+                  </div>
+                </div>
+
+                <div class="newsletter-input-mail">
+                  <span class="ico-newsletter-email"></span>
+                  <div class="inside-mail-input">
+                    <input id="subscriber_email" type="text" name="fullname" formControlName="Email"
+                      class="form-control newsletter-email" placeholder="Email" required />
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['Email'].hasError('required') && formRegister.controls['Email']?.touched">
+                    Email không được để trống!
+                  </div>
+                  <div class="col-12" style="color: red;" *ngIf="formRegister.controls['Email'].hasError('email')">
+                    Email không đúng định dạng
+                  </div>
+                </div>
+
+                <div class="newsletter-input-mail">
+                  <span class="ico-newsletter-pass"></span>
+                  <div class="inside-mail-input">
+                    <input id="subscriber_email" type="password" name="Password" formControlName="Password"
+                      class="form-control newsletter-email" placeholder="Mật khẩu" required />
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['Password'].hasError('required') && formRegister.controls['Password']?.touched">
+                    Mật khẩu không được để trống!
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['Password'].hasError('maxlength')">
+                    Mật khẩu không được quá 50 ký tự!
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['Password'].hasError('minlength')">
+                    Mật khẩu ít nhất 6 ký tự!
+                  </div>
+                </div>
+
+                <div class="newsletter-input-mail">
+                  <span class="ico-newsletter-pass"></span>
+                  <div class="inside-mail-input">
+                    <input id="subscriber_email" type="password" name="ConfirmPassword"
+                      formControlName="ConfirmPassword" class="form-control newsletter-email"
+                      placeholder="Mật khẩu xác nhận" required />
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['ConfirmPassword'].hasError('required') && formRegister.controls['ConfirmPassword']?.touched">
+                    Mật khẩu xác nhận không được để trống!
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['ConfirmPassword'].hasError('maxlength')">
+                    Mật khẩu không được quá 50 ký tự!
+                  </div>
+                  <div class="col-12" style="color: red;"
+                    *ngIf="formRegister.controls['ConfirmPassword'].hasError('minlength')">
+                    Mật khẩu ít nhất 6 ký tự!
+                  </div>
+                </div>
+                <div class="btn-submit-newsletter">
+                  <button type="submit" id="newsletter_submit_email" class="newsletter-submit-btn">Đăng ký</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- END wrapper -->
+<ngx-spinner bdColor="rgba(51,51,51,0.8)">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast position="top-right"></p-toast>

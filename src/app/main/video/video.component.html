@@ -1,0 +1,120 @@
+<!-- Content -->
+<div class="main-content">
+  <div class="container">
+
+    <!-- Video-item -->
+    <div class="video-big">
+      <a routerLink="/video/chi-tiet/{{bigVideo.Url}}/{{bigVideo.Id}}">
+        <img class="img-responsive" style="width:100%" [src]="baseUrl+bigVideo.Image" alt="">
+      </a>
+      <div class="video-big__title">
+        <a class="video-big__link" routerLink="/video/chi-tiet/{{bigVideo.Url}}/{{bigVideo.Id}}">{{bigVideo.Name}}</a>
+        <div class="button-play button-play-big">
+          <span class="button-play__video button-play__video-big"><i></i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-video">
+      <div *ngFor="let item of videos,let i =index">
+        <div class="col-md-4" *ngIf="i<3">
+          <div class="video-content">
+            <a class="video-content__img" routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}">
+              <span class="img_16_9_video">
+                <img class="lazy img-responsive" [src]="baseUrl+item.Image" width="445" height="250" alt="">
+              </span>
+              <div class="button-play">
+                <span class="button-play__video"><i></i></span>
+              </div>
+            </a>
+            <a class="video-content__title" routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}">{{item.Name}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row row-video hidden-sm hidden-xs">
+      <div class="col-md-6">
+        <div class="video-content-img-big sm-mb20">
+          <a routerLink="/video/chi-tiet/{{topVideo.Url}}/{{topVideo.Id}}" class="post-item__thumb">
+            <span class="img_16_9_video">
+              <img class="lazy img-responsive" [src]="baseUrl+topVideo.Image" width="445" height="250" alt="">
+            </span>
+            <div class="button-play button-play-1">
+              <span class="button-play__video button-play__video-1"><i></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <a class="video-content-title-big" routerLink="/video/chi-tiet/{{topVideo.Url}}/{{topVideo.Id}}">
+          {{topVideo.Name}}</a>
+        <div class="video-content-text">
+          {{topVideo.Description}}</div>
+      </div>
+    </div>
+
+    <div class="row row-video">
+      <div *ngFor="let item of videos,let i =index">
+        <div class="col-md-4" *ngIf="i>=3">
+          <div class="video-content">
+            <a class="video-content__img" routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}">
+              <span class="img_16_9_video">
+                <img class="lazy img-responsive" [src]="baseUrl+item.Image" width="445" height="250" alt="">
+              </span>
+              <div class="button-play">
+                <span class="button-play__video"><i></i></span>
+              </div>
+            </a>
+            <a class="video-content__title" routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}">{{item.Name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /Video-item -->
+    <a href="javascript:void(0)" (click)="showMore()" *ngIf="videos.length<totalCount-2" title="" data-post-type="video"
+      data-not_in='["467278","463153","459209"]' class="readmore-category btn-viewmore" term-id="" data-page="1"
+      number-post-page-first="16" posts-per-page="6" total-page="39">Xem thêm video...</a>
+  </div>
+  <div class="fixed-block">
+    <ul class="list-unstyled list-brand">
+      <li class="list-brand__item">
+        <a href="http://www.elleman.vn" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-1.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-1.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="http://www.elledecoration.vn/" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-2.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-2.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="https://www.elle.vn/elle-network" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-3.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-3.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="https://www.elle.vn/elle-moi-ngay" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-4.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-4.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="#newsletter-popup" class="newsletter-popup-btn list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/Newsletter.jpg"><noscript><img width="58"
+              height="53" src="https://www.elle.vn/wp-content/themes/ellev3/images/Newsletter.jpg"></noscript></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Content -->

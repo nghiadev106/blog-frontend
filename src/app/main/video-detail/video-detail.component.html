@@ -1,0 +1,22 @@
+<!-- Content -->
+<div class="main-content">
+  <div class="container">
+    <!-- Video-item -->
+    <div class="video" [innerHTML]="video.Link"></div>
+    <div class="row row-video">
+      <div class="col-md-8">
+        <a class="video-content-title-big" href="javascript:void(0)">
+          {{video!.Name}}</a>
+        <div class="video-content-text">
+          <p>{{video!.Description}}</p>
+        </div>
+        <div [innerHTML]="video.Detail">
+
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content -->

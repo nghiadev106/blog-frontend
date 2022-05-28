@@ -1,0 +1,131 @@
+<!-- Content -->
+<div class="main-content">
+  <div class="container">
+    <!-- Onesignal button  -->
+    <div class="onsignal-element">
+      <div class="inside-base-elem">
+        <div class="bell-image">
+          <img src="https://www.elle.vn/wp-content/themes/ellev3/images/AlarmRedDesktop.png" alt="icons8-bell-90"
+            width="29" height="29"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/AlarmRedDesktop.png"><noscript><img
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/AlarmRedDesktop.png" alt="icons8-bell-90"
+              width="29" height="29"></noscript>
+        </div>
+        <!-- <div class="onsignal-box"> -->
+        <div class='paramgrap_ones'>Kết nối với ELLE! Bắt kịp nhịp đập thời trang, làm đẹp và phong cách sống.</div>
+        <div class='onesignal-customlink-container'>
+          <a class="newsletter-popup-btn onesignal-custombutton-subscribe" routerLink="/dang-ky">Đăng ký</a>
+        </div>
+      </div>
+    </div>
+    <!-- Category-item -->
+    <div class="row content-category">
+      <div class="col-md-6" *ngIf="bigBlog!==null">
+        <div class="content-category__top">
+          <div class="img-top-category">
+            <a routerLink="/bai-viet/chi-tiet/{{bigBlog.Url}}/{{bigBlog.Id}}"><img class="img-responsive"
+                style="width: 100%" [src]="baseUrl+bigBlog.Image" alt=""></a>
+            <h2 class="title-category-first">{{categoryName}}</h2>
+          </div>
+          <a routerLink="/bai-viet/chi-tiet/{{bigBlog.Url}}/{{bigBlog.Id}}">
+            <h1 class="title-category-last sm-mb15">{{bigBlog.Name}}
+            </h1>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div *ngFor="let item of blogs,let i=index">
+          <div class="content-category__inner row" *ngIf="i<=2">
+            <div class="col-md-6 content-category__item sm-mb15">
+              <a routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}" class="post-item__thumb img_16_9">
+                <img class="img-responsive" [src]="baseUrl+item.Image" alt="" />
+              </a>
+            </div>
+            <div class="col-md-6 content-category__item">
+              <a class="title-category" routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}">{{item.Name}}</a>
+              <div class="text-category">
+                {{item.Description}}
+              </div>
+            </div>
+          </div>
+          <hr class="border-dotted border-black" *ngIf="i<=2">
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let item of blogs,let i=index">
+      <div class="post-item post-item--green post-item--border-bottom" *ngIf="i>2">
+        <div class="post-item__inner">
+          <div class="row">
+            <div class="col-md-5">
+              <a routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}" class="post-item__thumb img_16_9 sm-mb15">
+                <img [src]="baseUrl+item.Image" width="445" height="250" alt="" class="lazy img-responsive">
+              </a>
+            </div>
+            <div class="col-md-7">
+              <div class="post-item__info sm-mt15">
+                <div class="post-item__detail mt20">
+                  <span class="post-item__circle"></span>
+                  <a class="post-item__detail-sub post-item__category" routerLink="/thoi-trang/">{{categoryName}}</a>
+
+                </div>
+                <a routerLink="/bai-viet/chi-tiet/{{bigBlog.Url}}/{{bigBlog.Id}}"
+                  class="post-item__title">{{item.Name}}</a>
+                <div class="post-item__desc">
+                  {{item.Description}}
+                </div>
+                <div class="post-item-author mt15">
+                  {{item.CreateBy}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <a href="javascript:void(0)" (click)="showMore()" title="" *ngIf="blogs.length<totalCount-2"
+      class="readmore-category btn-viewmore" term-id="13" data-page="1" number-post-page-first="16" posts-per-page="10"
+      total-page="52.9">Xem thêm...</a>
+  </div>
+
+  <div class="fixed-block">
+    <ul class="list-unstyled list-brand">
+      <li class="list-brand__item">
+        <a href="http://www.elleman.vn" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-1.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-1.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="http://www.elledecoration.vn/" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-2.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-2.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="https://www.elle.vn/elle-network" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-3.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-3.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="https://www.elle.vn/elle-moi-ngay" target="_blank" class="list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-4.jpg"><noscript><img
+              width="58" height="53"
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/icon-fixed-4.jpg"></noscript></a>
+      </li>
+      <li class="list-brand__item">
+        <a href="#newsletter-popup" class="newsletter-popup-btn list-brand__link"><img width="58" height="53"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2058%2053'%3E%3C/svg%3E"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/Newsletter.jpg"><noscript><img width="58"
+              height="53" src="https://www.elle.vn/wp-content/themes/ellev3/images/Newsletter.jpg"></noscript></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Content -->

@@ -1,0 +1,186 @@
+<div class="main-content">
+  <div class="container">
+    <!-- Top-news -->
+    <div class="top-news">
+      <div class="top-news__inner mobile-free-slide">
+
+        <div class="top-news__item" *ngFor="let item of lstTopBlogs">
+          <a routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}" class="post-item__thumb img_16_9">
+            <img class="img-responsive" [src]="baseUrl + item.Image" alt="">
+          </a>
+          <a class="top-news__title" routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}">{{item.Name}}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post-item -->
+    <div class="post-item post-item--green" *ngIf="topVideo!==null">
+      <div class="post-item__inner">
+        <div class="row">
+          <div class="col-md-7 col-xs-12">
+            <div class="embed-responsive embed-responsive-16by9 sm-mb15">
+              <div [innerHtml]="topVideo.Link"></div>
+            </div>
+
+          </div>
+          <div class="col-md-5 col-xs-12">
+            <div class="post-item__info sm-mb15">
+              <span class="post-item__title" style="cursor: default;">{{topVideo.Name}}</span>
+              <div class="post-item__desc">
+                {{topVideo.Description}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category title -->
+    <div class="category-title hidden-xs hidden-sm">
+      <span class="category-title__sub">{{dataNow}}</span>
+      <i class="fa fa-star category-title__icon"></i> <span class="category-title__sub">News feed</span>
+      <i class="fa fa-star category-title__icon"></i> <span class="category-title__sub">Tin mới nhất</span>
+    </div>
+
+    <!-- Post-item -->
+    <!-- block 1 post 1 -->
+    <div class="post-item post-item--blue post-item--border-bottom">
+      <div class="post-item__inner">
+        <div class="row">
+          <div class="col-md-7 col-md-push-5" *ngIf="topNewFeed!==null">
+            <a routerLink="/bai-viet/chi-tiet/{{topNewFeed.Url}}/{{topNewFeed.Id}}" class="post-item__thumb img_16_9">
+              <img [src]="baseUrl + topNewFeed.Image" width="445" height="250" alt="" class="lazy img-responsive">
+            </a>
+          </div>
+          <div class="col-md-5 col-md-pull-7">
+            <div class="post-item__info sm-mt15">
+              <div class="post-item__detail md-mt20">
+                <span class="post-item__circle"></span>
+              </div>
+              <a href="/bai-viet/chi-tiet/{{topNewFeed.Url}}/{{topNewFeed.Id}}"
+                class="post-item__title">{{topNewFeed.Name}}</a>
+              <div class="post-item__desc">
+                {{topNewFeed.Description}}</div>
+              <div class="post-item-author mt15 mb_mt10">
+                {{topNewFeed.CreateBy}} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Post-item -->
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Post-item -->
+        <div class="post-item post-item--green  post-item--border-bottom" *ngFor="let item of blogs">
+          <div class="post-item__inner">
+            <div class="row">
+              <div class="col-md-6">
+                <a routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}" class="post-item__thumb img_16_9">
+                  <img [src]="baseUrl + item.Image" width="445" height="250" alt="" class="lazy img-responsive">
+                </a>
+              </div>
+              <div class="col-md-6">
+                <div class="post-item__info sm-mt15">
+                  <a routerLink="/bai-viet/chi-tiet/{{item.Url}}/{{item.Id}}" class="post-item__title">{{item.Name}}</a>
+                  <div class="post-item__desc">
+                    {{item.Description}}</div>
+                  <div class="post-item-author mt15 mb_mt10">
+                    {{item.CreateBy}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" id="ellevietnam">
+        <div class="instagram-sidebar hidden-xs hidden-sm">
+          <div class="instagram-sidebar__inner">
+            <div class="instagram-sidebar__title">
+              <span class="instagram-sidebar__icon"><i class="fa fa-instagram"></i></span>
+              <h2 class="instagram-sidebar__title-text"><strong>#ELLE</strong>Vietnam</h2>
+            </div>
+            <div class="instagram-sidebar__item">
+              <div class="instagram-sidebar__thumb"><a href="https://www.instagram.com/p/CZMwSBbv1Mh/"
+                  class="instagram-sidebar__link" target="_blank"><img
+                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                    alt="" class="img-responsive"
+                    data-lazy-src="https://www.elle.vn/wp-content/uploads/2021/06/18/383257/272750833_3086182041708439_7598644103920891381_n-255x255.jpeg"><noscript><img
+                      src="https://www.elle.vn/wp-content/uploads/2021/06/18/383257/272750833_3086182041708439_7598644103920891381_n-255x255.jpeg"
+                      alt="" class="img-responsive"></noscript></a></div>
+              <a href="https://www.instagram.com/p/CZMwSBbv1Mh/" class="instagram-sidebar__link"
+                target="_blank">Instagram @kris.nguyen97</a>
+            </div>
+            <div class="instagram-sidebar__item">
+              <div class="instagram-sidebar__thumb"><a href="https://www.instagram.com/p/CZMRrQCPeoU/"
+                  class="instagram-sidebar__link" target="_blank"><img
+                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                    alt="" class="img-responsive"
+                    data-lazy-src="https://www.elle.vn/wp-content/uploads/2021/06/18/383259/272685896_4725696687543777_8361618431152248720_n-255x255.jpeg"><noscript><img
+                      src="https://www.elle.vn/wp-content/uploads/2021/06/18/383259/272685896_4725696687543777_8361618431152248720_n-255x255.jpeg"
+                      alt="" class="img-responsive"></noscript></a></div>
+              <a href="https://www.instagram.com/p/CZMRrQCPeoU/" class="instagram-sidebar__link"
+                target="_blank">Instagram @ellevietnam</a>
+            </div>
+            <div class="instagram-sidebar__item">
+              <div class="instagram-sidebar__thumb"><a href="https://www.instagram.com/p/CZJgiRjPM9i/"
+                  class="instagram-sidebar__link" target="_blank"><img
+                    src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E"
+                    alt="" class="img-responsive"
+                    data-lazy-src="https://www.elle.vn/wp-content/uploads/2021/06/18/383256/272728006_659846138528158_6082674154013468803_n-255x255.jpg"><noscript><img
+                      src="https://www.elle.vn/wp-content/uploads/2021/06/18/383256/272728006_659846138528158_6082674154013468803_n-255x255.jpg"
+                      alt="" class="img-responsive"></noscript></a></div>
+              <a href="https://www.instagram.com/p/CZJgiRjPM9i/" class="instagram-sidebar__link"
+                target="_blank">Instagram @ellevietnam</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="onsignal-element">
+      <div class="inside-base-elem">
+        <div class="bell-image">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2029%2029'%3E%3C/svg%3E"
+            alt="icons8-bell-90" width="29" height="29"
+            data-lazy-src="https://www.elle.vn/wp-content/themes/ellev3/images/AlarmRedDesktop.png"><noscript><img
+              src="https://www.elle.vn/wp-content/themes/ellev3/images/AlarmRedDesktop.png" alt="icons8-bell-90"
+              width="29" height="29"></noscript>
+        </div>
+        <!-- <div class="onsignal-box"> -->
+        <div class='paramgrap_ones'>Kết nối với ELLE! Bắt kịp nhịp đập thời trang, làm đẹp và phong cách sống.</div>
+        <div class='onesignal-customlink-container'>
+          <a class="newsletter-popup-btn onesignal-custombutton-subscribe" routerLink="/dang-ky">Đăng ký</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <div class="box-border mb30">
+      <h2 class="title">
+        <strong>Video </strong><span class="title__ex">Mới nhất</span>
+      </h2>
+      <div class="news-video-block">
+        <div class="news-video-block__inner mobile-free-slide">
+          <div class="video-item" *ngFor="let item of videos,let i=index" [ngClass]="i===0?'video-item--first':''">
+            <div class="video-item__inner">
+              <a routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}" class="video-item__thumb">
+                <span class="img_16_9_video">
+                  <img [src]="baseUrl + item.Image" width="445" height="250" class="lazy img-responsive">
+                </span>
+                <div class="button-play">
+                  <span class="button-play__video"><i></i></span>
+                </div>
+              </a>
+              <a routerLink="/video/chi-tiet/{{item.Url}}/{{item.Id}}" class="video-item__title">{{item.Name}}</a>
+              <div class="video-item__desc hidden-xs hidden-sm" *ngIf="i===0">
+                {{item.Description}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
