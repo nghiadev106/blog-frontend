@@ -6,10 +6,11 @@ import { CategoryComponent } from './main/category/category.component';
 import { DetailComponent } from './main/detail/detail.component';
 import { HomeComponent } from './main/home/home.component';
 import { LoginComponent } from './main/login/login.component';
-import { PostBlogComponent } from './main/post-blog/post-blog.component';
 import { RegisterComponent } from './main/register/register.component';
+import { SurveyComponent } from './main/survey/survey.component';
 import { VideoDetailComponent } from './main/video-detail/video-detail.component';
 import { VideoComponent } from './main/video/video.component';
+import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'dang-bai',
-    component: BlogComponent,
+    component: BlogComponent, canActivate: [AuthGuard],
   }
   , {
     path: 'dang-nhap',
@@ -46,6 +47,9 @@ const routes: Routes = [
   }, {
     path: 'dang-ky',
     component: RegisterComponent,
+  }, {
+    path: 'khao-sat',
+    component: SurveyComponent,
   },
 ];
 @NgModule({

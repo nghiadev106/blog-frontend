@@ -32,12 +32,13 @@
           </li>
         </ul>
         <!-- <a class="top-header__link point_ellevietnam" href="#ellevietnam">#ELLEVietnam</a> -->
-        <a class="top-header__link newsletter-popup-btn" href="#newsletter-popup">NEWSLETTER</a>
-        <form class="form-search-header custom-search hidden-xs hidden-sm">
-          <a href="#search-form" class="form-search-header__button top-mobile-header__btn-search" type="submit">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </a>
-        </form>
+        <a class="top-header__link newsletter-popup-btn" (click)="logout()" *ngIf="fullName">Đăng xuất </a>
+        <a class="top-header__link newsletter-popup-btn" routerLink="#" *ngIf="fullName"> | </a>
+        <a class="top-header__link newsletter-popup-btn" routerLink="#" *ngIf="fullName">{{fullName}}</a>
+
+        <a class="top-header__link newsletter-popup-btn" routerLink="/dang-nhap" *ngIf="!fullName">Đăng nhập </a>
+        <a class="top-header__link newsletter-popup-btn" routerLink="#" *ngIf="!fullName"> | </a>
+        <a class="top-header__link newsletter-popup-btn" routerLink="/dang-ky" *ngIf="!fullName"> Đăng ký</a>
       </div>
     </div>
   </div>

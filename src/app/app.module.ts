@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
@@ -16,13 +16,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { TagCategoryComponent } from './components/tag-category/tag-category.component';
 import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PostBlogComponent } from './main/post-blog/post-blog.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CheckboxModule } from 'primeng/checkbox';
 import { BlogComponent } from './main/blog/blog.component';
+import { AuthGuard, JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { SurveyComponent } from './main/survey/survey.component';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -38,8 +42,8 @@ import { BlogComponent } from './main/blog/blog.component';
     FooterComponent,
     HeaderComponent,
     TagCategoryComponent,
-    PostBlogComponent,
-    BlogComponent
+    BlogComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +56,16 @@ import { BlogComponent } from './main/blog/blog.component';
     BrowserAnimationsModule,
     FileUploadModule,
     CheckboxModule,
-    CKEditorModule
+    CKEditorModule,
+    DialogModule,
+    ConfirmDialogModule,
   ],
-  providers: [FormBuilder],
+  providers: [
+    FormBuilder,
+    AuthGuard,
+    MessageService, ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

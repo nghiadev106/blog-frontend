@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -30,6 +31,7 @@ export class BlogComponent implements OnInit {
     private categoryService: CategoryService,
     private blogService: BlogService,
     private fb: FormBuilder,
+    private route: Router,
     private authenService: AuthenticationService,
     private utilityService: UtilityService,
   ) { }
@@ -71,37 +73,38 @@ export class BlogComponent implements OnInit {
   }
 
   onAdd(): void {
-    this.getEncodeFromImage(this.files.first).subscribe(
-      {
-        next: (data: any) => {
-          let data_image = data == '' ? null : data;
-          var blog = this.formAdd.value;
-          blog.Image = data_image;
-          blog.CreateBy = this.user;
-          this.blogService
-            .add(blog)
-            .pipe(first())
-            .subscribe({
-              next: (res: any) => {
-                if (res !== null) {
-                  this.messageService.add({
-                    severity: 'success',
-                    summary: 'Thông báo',
-                    detail: 'Thêm thành công !',
-                  });
-                  this.clearModalAdd();
-                }
-              },
-              error: (err: any) => {
+    this.getEncodeFromImage(this.files.first).subscribe({
+      next: (data: any) => {
+        console.log(data)
+        let data_image = data == '' ? null : data;
+        var blog = this.formAdd.value;
+        blog.Image = data_image;
+        blog.CreateBy = this.user;
+        this.blogService
+          .add(blog)
+          .pipe(first())
+          .subscribe({
+            next: (res: any) => {
+              if (res !== null) {
                 this.messageService.add({
-                  severity: 'error',
-                  summary: err.Message || 'Có lỗi vui lòng thử lại sau',
-                  detail: err.Errors || 'Có lỗi vui lòng thử lại sau',
+                  severity: 'success',
+                  summary: 'Thông báo',
+                  detail: 'Thêm thành công !',
                 });
-              },
-            });
-        }
-      });
+                this.clearModalAdd();
+                this.route.navigate(['/'])
+              }
+            },
+            error: (err: any) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: err.Message || 'Có lỗi vui lòng thử lại sau',
+                detail: err.Errors || 'Có lỗi vui lòng thử lại sau',
+              });
+            },
+          });
+      }
+    });
   }
 
   clearModalAdd() {
