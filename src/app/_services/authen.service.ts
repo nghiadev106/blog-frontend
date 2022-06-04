@@ -26,7 +26,7 @@ export class AuthenticationService {
   public userValue(): any {
     var user = localStorage.getItem("user");
     if (user) {
-      JSON.parse(user);
+      return JSON.parse(user);
     }
     return '';
   }

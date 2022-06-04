@@ -1,3 +1,4 @@
+import { SurveyService } from './../../_services/survey.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -23,7 +24,7 @@ export class BlogComponent implements OnInit {
   formLogin!: FormGroup;
   blogs: any;
   categories: any;
-  user = '';
+  user: any;
   public baseUrl = 'https://localhost:5000/uploads/';
   @ViewChildren(FileUpload) files!: QueryList<FileUpload>;
   constructor(
@@ -34,9 +35,11 @@ export class BlogComponent implements OnInit {
     private route: Router,
     private authenService: AuthenticationService,
     private utilityService: UtilityService,
+    private surveyService: SurveyService
   ) { }
   ngOnInit(): void {
-    this.user = this.authenService.userValue().FullName || '';
+    this.user = this.authenService.userValue();
+    this.checkSurvey();
     this.formAdd = this.fb.group({
       Name: this.fb.control('', [Validators.required, Validators.maxLength(250)]),
       Description: this.fb.control(''),
@@ -52,6 +55,29 @@ export class BlogComponent implements OnInit {
 
   public createAlias() {
     this.formAdd.controls['Url'].setValue(this.utilityService.MakeSeoTitle(this.formAdd.controls['Name'].value));
+  }
+
+  checkSurvey() {
+    if (this.user.UserId) {
+      this.surveyService
+        .checkSurvey(this.user.UserId, 6004)
+        .pipe(first())
+        .subscribe({
+          next: (res: any) => {
+            if (res === 0) {
+              this.route.navigateByUrl('/khao-sat');
+            }
+          },
+          error: (err: any) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: err.Message || 'Có lỗi vui lòng thử lại sau',
+              detail: err.Errors || 'Có lỗi vui lòng thử lại sau',
+            });
+          },
+        });
+    }
+
   }
 
   loadCategories(): void {
@@ -79,7 +105,7 @@ export class BlogComponent implements OnInit {
         let data_image = data == '' ? null : data;
         var blog = this.formAdd.value;
         blog.Image = data_image;
-        blog.CreateBy = this.user;
+        blog.CreateBy = this.user.FullName || 'Admin';
         this.blogService
           .add(blog)
           .pipe(first())

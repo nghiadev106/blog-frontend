@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from 'src/environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -11,7 +10,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class UserAnswerService {
-  private API_URL = 'http://localhost:5000/api/useranswers';
+  private API_URL = 'https://localhost:5000/api/useranswers';
   private userAnswer = new BehaviorSubject<any[]>([]);
   lstAnswer!: any;
   userAnswer$ = this.userAnswer.asObservable();

@@ -14,9 +14,9 @@ import { UserAnswerService } from 'src/app/_services/user-answer.service';
   styleUrls: ['./survey.component.css']
 })
 export class SurveyComponent implements OnInit {
-  surveyId!: number;
+  surveyId: number = 6004;
   userId!: string;
-  survey: any;
+  survey: any = {};
   isTake: boolean = false;
   isSuccess: boolean = false;
   constructor(
@@ -34,7 +34,6 @@ export class SurveyComponent implements OnInit {
     this.userId = this.authenService.userValue().UserId;
     this.userAnswerService.clearAnswers();
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.surveyId = params["surveyId"];
       this.loadData();
     });
   }
@@ -42,7 +41,7 @@ export class SurveyComponent implements OnInit {
   loadData(): void {
     this.spinner.show();
     this.surveyService
-      .GetSurveyDetail(this.userId, this.surveyId)
+      .GetSurveyDetail(this.userId, 6004)
       .pipe(first())
       .subscribe({
         next: (res) => {
@@ -65,35 +64,30 @@ export class SurveyComponent implements OnInit {
   }
 
   onSubmit() {
-    this.confirmationService.confirm({
-      header: 'Lưu khảo sát ?',
-      message: 'Bạn có chắc muốn lưu khảo sát ?',
-      accept: () => {
-        var ob = this.userAnswerService.onSubmit(this.surveyId);
-        if (ob !== undefined) {
-          ob.subscribe({
-            next: (res) => {
-              if (res !== null) {
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Thông báo',
-                  detail: 'Lưu thông tin thành công !',
-                });
-                this.userAnswerService.clearAnswers();
-                this.router.navigateByUrl('/dang-bai');
-              }
-            },
-            error: (err) => {
-              this.messageService.add({
-                severity: 'error',
-                summary: err.Message || 'Có lỗi vui lòng thử lại sau',
-                detail: err.Errors || 'Có lỗi vui lòng thử lại sau',
-              });
-            },
+    var ob = this.userAnswerService.onSubmit(this.surveyId);
+    if (ob !== undefined) {
+      ob.subscribe({
+        next: (res) => {
+          if (res !== null) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Thông báo',
+              detail: 'Lưu thông tin thành công !',
+            });
+            this.userAnswerService.clearAnswers();
+            this.router.navigateByUrl('/dang-bai');
+          }
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: err.Message || 'Có lỗi vui lòng thử lại sau',
+            detail: err.Errors || 'Có lỗi vui lòng thử lại sau',
           });
-        }
-      },
-    });
+        },
+      });
+    }
+
   }
 
   onChangeRadioButton(item: any, event: any) {

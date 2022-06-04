@@ -11,10 +11,15 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class SurveyService {
-  private API_URL = `http://localhost:5000/api/surveies`;
+  private API_URL = `https://localhost:5000/api/surveies`;
   constructor(private readonly http: HttpClient) { }
   getAll() {
     const url = `${this.API_URL}`;
+    return this.http.get<any>(url);
+  }
+
+  checkSurvey(userId: string, surveyID: number): Observable<any> {
+    const url = `${this.API_URL}/checkSurvey/${surveyID}/user/${userId}`;
     return this.http.get<any>(url);
   }
 
